@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://brtqtu1xwn5am"]
+
+[ext_resource type="PackedScene" uid="uid://bd7yvbqj1grjx" path="res://player.tscn" id="1_ob3t7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ttfia"]
+size = Vector3(6.62, 0.285, 8.93)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iuku0"]
+data = PackedVector3Array(-3.31, 0.1425, 4.465, 3.31, 0.1425, 4.465, -3.31, -0.1425, 4.465, 3.31, 0.1425, 4.465, 3.31, -0.1425, 4.465, -3.31, -0.1425, 4.465, 3.31, 0.1425, -4.465, -3.31, 0.1425, -4.465, 3.31, -0.1425, -4.465, -3.31, 0.1425, -4.465, -3.31, -0.1425, -4.465, 3.31, -0.1425, -4.465, 3.31, 0.1425, 4.465, 3.31, 0.1425, -4.465, 3.31, -0.1425, 4.465, 3.31, 0.1425, -4.465, 3.31, -0.1425, -4.465, 3.31, -0.1425, 4.465, -3.31, 0.1425, -4.465, -3.31, 0.1425, 4.465, -3.31, -0.1425, -4.465, -3.31, 0.1425, 4.465, -3.31, -0.1425, 4.465, -3.31, -0.1425, -4.465, 3.31, 0.1425, 4.465, -3.31, 0.1425, 4.465, 3.31, 0.1425, -4.465, -3.31, 0.1425, 4.465, -3.31, 0.1425, -4.465, 3.31, 0.1425, -4.465, -3.31, -0.1425, 4.465, 3.31, -0.1425, 4.465, -3.31, -0.1425, -4.465, 3.31, -0.1425, 4.465, 3.31, -0.1425, -4.465, -3.31, -0.1425, -4.465)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ttfia")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_iuku0")
+
+[node name="Player" parent="." instance=ExtResource("1_ob3t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1034, 2.49666, 2.19059)
