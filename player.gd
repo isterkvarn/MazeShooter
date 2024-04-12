@@ -3,10 +3,15 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+const MOUSE_SENSITIVITY = 0.002
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@onready var rotation_helper = $RotationHelper
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -29,3 +34,9 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+func _input(event):
+	if event is InputEventMouseMotion:
+		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
+		rotation_helper.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
+		rotation_helper.rotation.x = clampf(rotation_helper.rotation.x, -PI/2, PI/2)

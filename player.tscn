@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd7yvbqj1grjx"]
+[gd_scene load_steps=4 format=3 uid="uid://bd7yvbqj1grjx"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_c0mdm"]
+[ext_resource type="Texture2D" uid="uid://jklnfanpn8y8" path="res://icon.svg" id="2_r1553"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndbho"]
 
@@ -10,5 +11,37 @@ script = ExtResource("1_c0mdm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ndbho")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.694826, 0)
+[node name="RotationHelper" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.621092, 0)
+
+[node name="Camera3D" type="Camera3D" parent="RotationHelper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0435137, 0)
+fov = 90.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 108.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r1553")
+stretch_mode = 3
