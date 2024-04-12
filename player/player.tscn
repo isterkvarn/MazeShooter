@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd7yvbqj1grjx"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_c0mdm"]
+[ext_resource type="Texture2D" uid="uid://cbj7vvmbnmyav" path="res://assests/images/crosshair.png" id="2_3f76i"]
+[ext_resource type="ArrayMesh" uid="uid://kt7s7t75gwj1" path="res://assests/models/gun.obj" id="2_hj4ws"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndbho"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_c0mdm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ndbho")
+
+[node name="RotationHelper" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.621092, 0)
+
+[node name="Camera3D" type="Camera3D" parent="RotationHelper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0435137, 0)
+cull_mask = 1048573
+current = true
+fov = 90.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="RotationHelper"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="RotationHelper/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="GunCam" type="Camera3D" parent="RotationHelper/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.596675, 0)
+cull_mask = 1047554
+fov = 90.0
+
+[node name="Gun" type="MeshInstance3D" parent="RotationHelper"]
+transform = Transform3D(0.199862, -0.00743339, 0, 0.00743339, 0.199862, 0, 0, 0, 0.2, 1.01287, -1.40518, -1.45927)
+layers = 2
+mesh = ExtResource("2_hj4ws")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 3
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/CenterContainer"]
+texture_filter = 5
+layout_mode = 2
+texture = ExtResource("2_3f76i")
+stretch_mode = 3

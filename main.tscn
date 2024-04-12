@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://brtqtu1xwn5am"]
+[gd_scene load_steps=4 format=3 uid="uid://c4bdw0lenx3bd"]
 
-[ext_resource type="PackedScene" uid="uid://bd7yvbqj1grjx" path="res://player.tscn" id="1_ob3t7"]
+[ext_resource type="PackedScene" uid="uid://bd7yvbqj1grjx" path="res://player/player.tscn" id="1_ob3t7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ttfia"]
 size = Vector3(6.62, 0.285, 8.93)
