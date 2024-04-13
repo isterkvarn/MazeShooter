@@ -1,0 +1,151 @@
+[gd_scene load_steps=10 format=3 uid="uid://bd7yvbqj1grjx"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_c0mdm"]
+[ext_resource type="Texture2D" uid="uid://cbj7vvmbnmyav" path="res://assests/images/crosshair.png" id="2_3f76i"]
+[ext_resource type="ArrayMesh" uid="uid://pq11u4r7fagw" path="res://assests/models/muzzle_flash.obj" id="2_5yqjn"]
+[ext_resource type="ArrayMesh" uid="uid://kt7s7t75gwj1" path="res://assests/models/gun.obj" id="2_hj4ws"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndbho"]
+
+[sub_resource type="Animation" id="Animation_8a8rm"]
+resource_name = "reload"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.27396e-09, -0.08875, 0.0371755), Vector3(-1.20337, -0.249314, 0.270466), Vector3(-1.20337, -0.249314, 0.270466), Vector3(1.27396e-09, -0.08875, 0.0371755)]
+}
+
+[sub_resource type="Animation" id="Animation_n7aky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.27396e-09, -0.08875, 0.0371755)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r0c7k"]
+_data = {
+"RESET": SubResource("Animation_n7aky"),
+"reload": SubResource("Animation_8a8rm")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpxgt"]
+albedo_color = Color(0.933333, 0.870588, 0, 1)
+emission_enabled = true
+emission = Color(0.913725, 0.847059, 0, 1)
+emission_energy_multiplier = 2.62
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_c0mdm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ndbho")
+
+[node name="RotationHelper" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.621092, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RotationHelper"]
+libraries = {
+"": SubResource("AnimationLibrary_r0c7k")
+}
+
+[node name="Camera3D" type="Camera3D" parent="RotationHelper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0435137, 0)
+cull_mask = 1048573
+current = true
+fov = 90.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="RotationHelper"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="RotationHelper/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="GunCam" type="Camera3D" parent="RotationHelper/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.596675, 0)
+cull_mask = 1047554
+fov = 90.0
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="RotationHelper"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.949447, -1.09, -0.505771)
+layers = 2
+material_override = SubResource("StandardMaterial3D_cpxgt")
+cast_shadow = 0
+mesh = ExtResource("2_5yqjn")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="RotationHelper/MuzzleFlash"]
+transform = Transform3D(6.66667, 0, 0, 0, 6.66667, 0, 0, 0, 6.66667, -2.33269, 6.16892, -7.39519)
+layers = 3
+light_color = Color(0.984314, 0.803922, 0, 1)
+light_energy = 1.5
+omni_range = 20.9339
+omni_shadow_mode = 0
+
+[node name="Gun" type="MeshInstance3D" parent="RotationHelper"]
+transform = Transform3D(0.0995376, -0.00370206, -0.00886335, 0.00371669, 0.0999309, -1.27396e-10, 0.00885723, -0.000329423, 0.0996064, 0.900077, -0.868212, -0.804792)
+layers = 2
+mesh = ExtResource("2_hj4ws")
+skeleton = NodePath("../..")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="RotationHelper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0435137, 0)
+light_energy = 7.0
+spot_range = 23.6429
+spot_angle = 31.1758
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 3
+light_energy = 0.5
+omni_range = 3.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/CenterContainer"]
+texture_filter = 5
+layout_mode = 2
+texture = ExtResource("2_3f76i")
+stretch_mode = 3
