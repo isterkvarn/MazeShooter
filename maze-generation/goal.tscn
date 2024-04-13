@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpm0wr8j4awv2"]
+
+[ext_resource type="Script" path="res://maze-generation/goal.gd" id="1_duajw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0n0p"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bri4i"]
+albedo_color = Color(1, 0, 0.0745098, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pfq62"]
+material = SubResource("StandardMaterial3D_bri4i")
+size = Vector3(5, 1, 5)
+
+[node name="Goal" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2.5)
+script = ExtResource("1_duajw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_y0n0p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pfq62")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
