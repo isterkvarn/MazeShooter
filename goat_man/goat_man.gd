@@ -25,8 +25,8 @@ func _process(delta):
 		turn_timer = 0.2
 		
 		# Adjust so in middle of corridor
-		global_position.x = snapped(global_position.x, 5)
-		global_position.y = snapped(global_position.y, 5)
+		global_position.x = snapped(global_position.x + 2.5, 5)
+		global_position.y = snapped(global_position.y + 2.5, 5)
 		
 		var turn_options = []
 		
@@ -50,7 +50,7 @@ func _process(delta):
 		forward = forward.rotated(Vector3(0, 1, 0), turn)
 		
 func in_grid():
-	var global_pos = abs(global_position)
+	var global_pos = abs(global_position + Vector3(2.5, 0, 2.5))
 	var decimal_x = global_pos.x - int(global_pos.x)
 	var decimal_z = global_pos.z - int(global_pos.z)
 	var mod_x = int(global_pos.x) % 5

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd7yvbqj1grjx"]
+[gd_scene load_steps=11 format=3 uid="uid://bd7yvbqj1grjx"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_c0mdm"]
 [ext_resource type="Texture2D" uid="uid://cbj7vvmbnmyav" path="res://assests/images/crosshair.png" id="2_3f76i"]
 [ext_resource type="ArrayMesh" uid="uid://pq11u4r7fagw" path="res://assests/models/muzzle_flash.obj" id="2_5yqjn"]
+[ext_resource type="Environment" uid="uid://dlxb8m8j8lyw3" path="res://player/player.tres" id="2_fjcxy"]
 [ext_resource type="ArrayMesh" uid="uid://kt7s7t75gwj1" path="res://assests/models/gun.obj" id="2_hj4ws"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndbho"]
@@ -72,6 +73,7 @@ libraries = {
 [node name="Camera3D" type="Camera3D" parent="RotationHelper"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0435137, 0)
 cull_mask = 1048573
+environment = ExtResource("2_fjcxy")
 current = true
 fov = 90.0
 
@@ -92,6 +94,7 @@ render_target_update_mode = 4
 [node name="GunCam" type="Camera3D" parent="RotationHelper/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.596675, 0)
 cull_mask = 1047554
+environment = ExtResource("2_fjcxy")
 fov = 90.0
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="RotationHelper"]
@@ -119,6 +122,7 @@ skeleton = NodePath("../..")
 [node name="OmniLight3D" type="OmniLight3D" parent="RotationHelper/Gun"]
 transform = Transform3D(1, 1.39698e-09, 0, -1.39698e-09, 1, 0, 0, 0, 1, -6.28522, 5.52327, -1.48481)
 layers = 2
+light_energy = 1.5
 light_cull_mask = 4294966274
 omni_range = 1.17686
 
@@ -126,11 +130,13 @@ omni_range = 1.17686
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0435137, 0)
 light_energy = 7.0
 spot_range = 23.6429
-spot_angle = 31.1758
+spot_attenuation = 0.8
+spot_angle = 35.3556
+spot_angle_attenuation = 0.90125
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 layers = 3
-light_energy = 0.5
+light_energy = 0.7
 omni_range = 3.0
 
 [node name="Control" type="Control" parent="."]

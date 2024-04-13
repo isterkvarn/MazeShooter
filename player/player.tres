@@ -1,0 +1,10 @@
+[gd_resource type="Environment" format=3 uid="uid://dlxb8m8j8lyw3"]
+
+[resource]
+background_mode = 1
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(1, 0.764706, 0.694118, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.3
+adjustment_saturation = 1.1
