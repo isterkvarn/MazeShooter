@@ -2,6 +2,9 @@
 
 [resource]
 background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.909804, 0.411765, 1)
+ambient_light_energy = 0.15
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(1, 0.764706, 0.694118, 1)
 adjustment_enabled = true

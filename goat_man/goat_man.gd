@@ -1,21 +1,33 @@
 extends Area3D
 
-const SPEED = 30
+const SPEED = 20
 const CORRIDOR_SIZE = 5
 const POS_MARGIN = 0.2
+const RESPAWN_TIME = 6
+const RESPAWN_VARIANCE = 2
 var forward = -Vector3.FORWARD
 var turn_timer = 0
 var g_position
+var respawn_timer = RESPAWN_TIME
 
 @onready var right_ray = $RayCastRight
 @onready var left_ray  = $RayCastLeft
 @onready var forward_ray = $RayCastForward
+
+func _ready():
+	$AudioStreamPlayer3D.playing = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	g_position = global_position + Vector3(2.5, 0, 2.5)
 	
 	turn_timer -= delta
+	
+	if respawn_timer > 0:
+		respawn_timer -= delta
+		if respawn_timer <= 0:
+			respawn()
+		return
 	
 	# Always run forward
 	g_position += forward*SPEED*delta
@@ -65,7 +77,12 @@ func in_grid():
 	return within_x and within_z
 	
 func hit():
-	queue_free()
+	$AudioStreamPlayer3D.playing = false
+	transform.origin = get_parent().get_random_pos()
+	respawn_timer = RESPAWN_TIME + randf_range(-RESPAWN_VARIANCE, RESPAWN_VARIANCE)
+	
+func respawn():
+	$AudioStreamPlayer3D.playing = true
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
