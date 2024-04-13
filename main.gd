@@ -14,8 +14,6 @@ var goats = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	new_level()
-	for i in range(6):
-		maze_dimension += 1
 
 func new_level():
 	maze = maze_res.instantiate()
