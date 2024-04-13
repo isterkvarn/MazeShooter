@@ -7,6 +7,21 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndbho"]
 
+[sub_resource type="Animation" id="Animation_n7aky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.27396e-09, -0.08875, 0.0371755)]
+}
+
 [sub_resource type="Animation" id="Animation_8a8rm"]
 resource_name = "reload"
 length = 3.0
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(1.27396e-09, -0.08875, 0.0371755), Vector3(-1.20337, -0.249314, 0.270466), Vector3(-1.20337, -0.249314, 0.270466), Vector3(1.27396e-09, -0.08875, 0.0371755)]
-}
-
-[sub_resource type="Animation" id="Animation_n7aky"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gun:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.27396e-09, -0.08875, 0.0371755)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r0c7k"]
@@ -106,7 +106,7 @@ omni_range = 20.9339
 omni_shadow_mode = 0
 
 [node name="Gun" type="MeshInstance3D" parent="RotationHelper"]
-transform = Transform3D(0.0995376, -0.00370206, -0.00886335, 0.00371669, 0.0999309, -1.27396e-10, 0.00885723, -0.000329423, 0.0996064, 0.900077, -0.868212, -0.804792)
+transform = Transform3D(0.0995376, -0.00370207, -0.00886335, 0.00371669, 0.0999309, -1.27396e-10, 0.00885723, -0.000329424, 0.0996064, 0.900077, -0.868212, -0.804792)
 layers = 2
 mesh = ExtResource("2_hj4ws")
 skeleton = NodePath("../..")
