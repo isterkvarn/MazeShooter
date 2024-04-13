@@ -8,7 +8,7 @@ const WALL = Vector2i(1, 1)
 @onready var generation = preload("maze_generation.gd").new()
 
 func _ready():
-	var graph = generation.generate(15, 15)
+	var graph = generation.generate(1, 1)
 	draw_graph(graph)
 
 func draw_wall(pos: Vector2i):

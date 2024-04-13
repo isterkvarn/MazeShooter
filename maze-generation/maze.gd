@@ -11,16 +11,28 @@ const ROOF_ITEM_ID = 0
 
 const DEBUG = false
 
+var graph = null
+
 @onready var generation = preload("maze_generation.gd").new()
 
 func _ready():
 	if DEBUG:
 		debug.visible = true
 		roof.visible = false
-	create(25, 25)
+		create(9, 9)
+
+func get_spawn_coords():
+	# Assume blocks are uniform and all grids have the same size
+	var cell_size = floor.cell_size.x
+	var grid_cell = Vector2i((graph.width/2)*2 + 1, (graph.height/2)*2 + 1)
+	
+	return Vector2(
+		grid_cell.x * cell_size + cell_size / 2,
+		grid_cell.y * cell_size + cell_size / 2,
+	)
 
 func create(width: int, height):
-	var graph = generation.generate(width, height)
+	graph = generation.generate(width, height)
 	
 	# Draw the outer walls
 	for y in [0, graph.height*2]:
@@ -63,4 +75,3 @@ func draw_wall(pos: Vector2i):
 
 func draw_roof(pos: Vector2i):
 	roof.set_cell_item(Vector3i(pos.x, 2, pos.y), ROOF_ITEM_ID)
-

@@ -85,7 +85,7 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 visible = false
 
 [node name="Camera3D" type="Camera3D" parent="Debug"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 120, 180.911, 120)
+transform = Transform3D(0.973762, -9.94737e-09, 0.227569, -0.227569, -4.25645e-08, 0.973762, 0, -1, -4.37114e-08, 105.815, 123.775, 120)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Debug"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 214.79, 0)
