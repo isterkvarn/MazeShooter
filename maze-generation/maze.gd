@@ -6,7 +6,7 @@ extends Node3D
 @onready var debug = $Debug
 
 const FLOOR_ITEM_ID = 0
-const WALL_ITEM_ID = 0
+const WALL_ITEM_ID = 1
 const ROOF_ITEM_ID = 0
 
 const FALL_HEIGHT = 5
