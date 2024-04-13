@@ -14,6 +14,7 @@ const FALL_HEIGHT = 5
 const DEBUG = false
 
 var graph = null
+var goal
 
 @onready var generation = preload("maze_generation.gd").new()
 
@@ -28,10 +29,18 @@ func get_spawn_coords():
 	var maze = maze_to_map(Vector2i(graph.width/2, graph.height/2))
 	return Vector3(maze.x, floor.cell_size.x * FALL_HEIGHT + 1, maze.y)
 
+func get_goal_coords():
+	var goal_pos = maze_to_map(goal)
+	return Vector3(
+		goal_pos.x,
+		-FALL_HEIGHT * floor.cell_size.x,
+		goal_pos.y
+	)
+
 func get_random_pos():
 	var pos = Vector2i(randi() % graph.width, randi() % graph.height)
 	pos = maze_to_map(pos)
-	return Vector3(pos.x, floor.cell_size.x + 1, pos.y)
+	return Vector3(pos.x, floor.cell_size.x, pos.y)
 
 func maze_to_map(coord: Vector2i) -> Vector2:
 	var cell_size = floor.cell_size.x
@@ -95,8 +104,7 @@ func create_goal():
 		for x in range(graph.width):
 			if graph.get_connections(Vector2i(x, y)).size() == 1:
 				dead_ends.append(Vector2i(x, y))
-	
-	var goal
+
 	# No idea how it could happen, but better safe than sorry
 	if not dead_ends.is_empty():
 		goal = dead_ends[randi() % dead_ends.size()]
