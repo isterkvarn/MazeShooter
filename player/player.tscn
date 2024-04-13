@@ -131,13 +131,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0435137, 0)
 light_energy = 7.0
 spot_range = 23.6429
 spot_attenuation = 0.8
-spot_angle = 35.3556
+spot_angle = 35.0
 spot_angle_attenuation = 0.90125
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 layers = 3
-light_energy = 0.7
-omni_range = 3.0
+light_energy = 0.5
+omni_range = 6.32912
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

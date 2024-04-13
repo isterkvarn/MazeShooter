@@ -40,6 +40,7 @@ target_position = Vector3(-3, 0, 0)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_qbadp")
+attenuation_model = 1
 autoplay = true
 doppler_tracking = 1
 
