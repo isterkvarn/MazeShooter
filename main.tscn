@@ -11,7 +11,4 @@ script = ExtResource("1_clddr")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63985, 26.4901, -32.3342)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.235871, 0.971784, 0, -0.971784, 0.235871, 0, 23.3383, 0)
-
 [node name="Maze" parent="." instance=ExtResource("3_fgq4a")]

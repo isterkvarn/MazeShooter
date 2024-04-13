@@ -13,9 +13,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var animator = $RotationHelper/AnimationPlayer
 @onready var shoot_ray = $RotationHelper/ShootRay
 
-const MAG_SIZE = 6
+const MAG_SIZE = 4
 const MUZZLE_TIME = 0.2
-const RELOAD_TIME = 3
+const RELOAD_TIME = 6
 
 var mag = MAG_SIZE
 var reload_timer = 0
