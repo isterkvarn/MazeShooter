@@ -10,8 +10,15 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var rotation_helper = $RotationHelper
 @onready var muzzle = $RotationHelper/MuzzleFlash
-var muzzle_timer = 0
+@onready var animator = $RotationHelper/AnimationPlayer
+
+const MAG_SIZE = 6
 const MUZZLE_TIME = 0.2
+const RELOAD_TIME = 3
+
+var mag = MAG_SIZE
+var reload_timer = 0
+var muzzle_timer = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -49,6 +56,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _input(event):
+	# Used for mouse movment
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		rotation_helper.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
@@ -56,11 +64,22 @@ func _input(event):
 		
 func handle_shoot(delta):
 	
-	# Handle muzzle flash
-	if Input.is_action_just_pressed("shoot"):
+	
+	if reload_timer > 0:
+		reload_timer -= delta
+	
+	# Handle shooting
+	if Input.is_action_just_pressed("shoot") and reload_timer <= 0:
 		muzzle.visible = true
 		muzzle_timer = MUZZLE_TIME
+		mag -= 1
 	
+	if Input.is_action_just_pressed("reload") or mag <= 0:
+		reload_timer = RELOAD_TIME
+		mag = MAG_SIZE
+		animator.play("reload")
+		
+	# Handle muzzle flash timer
 	if muzzle_timer > 0:
 		muzzle_timer -= delta
 	else:
