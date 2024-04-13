@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://qllw88lr10ht"]
+[gd_scene load_steps=6 format=3 uid="uid://qllw88lr10ht"]
 
 [ext_resource type="Script" path="res://goat_man/goat_man.gd" id="1_q72k3"]
+[ext_resource type="AudioStream" uid="uid://dglxgxncosofh" path="res://assests/sounds/fast-run-113726.mp3" id="2_qbadp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ppe2j"]
+size = Vector3(4, 4, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4hody"]
 size = Vector3(4, 4, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jmw0y"]
 
-[node name="GoatMan" type="Node3D"]
+[node name="GoatMan" type="Area3D" groups=["goat"]]
 script = ExtResource("1_q72k3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_ppe2j")
 
 [node name="TestGoatMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -29,3 +37,10 @@ target_position = Vector3(3, 0, 0)
 [node name="RayCastLeft" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63611, 0)
 target_position = Vector3(-3, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_qbadp")
+autoplay = true
+doppler_tracking = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

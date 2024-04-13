@@ -1,4 +1,4 @@
-extends Node3D
+extends Area3D
 
 const SPEED = 30
 const CORRIDOR_SIZE = 5
@@ -18,8 +18,6 @@ func _process(delta):
 	
 	# Always run forward
 	global_position += forward*SPEED*delta
-
-	#print(in_grid())
 	
 	if forward_ray.is_colliding() or (in_grid() and turn_timer <= 0 and 
 	(not left_ray.is_colliding() or not right_ray.is_colliding())):
@@ -62,3 +60,10 @@ func in_grid():
 	var within_z = (POS_MARGIN > (mod_z + decimal_z)) or (POS_MARGIN > (mod_z - decimal_z))
 	
 	return within_x and within_z
+	
+func hit():
+	queue_free()
+
+func _on_body_entered(body):
+	if body.is_in_group("player"):
+		body.dead()

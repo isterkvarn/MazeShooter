@@ -50,7 +50,7 @@ emission_enabled = true
 emission = Color(0.913725, 0.847059, 0, 1)
 emission_energy_multiplier = 2.62
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_c0mdm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -58,6 +58,11 @@ shape = SubResource("CapsuleShape3D_ndbho")
 
 [node name="RotationHelper" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.621092, 0)
+
+[node name="ShootRay" type="RayCast3D" parent="RotationHelper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0435137, 0)
+target_position = Vector3(0, 0, -100)
+collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RotationHelper"]
 libraries = {

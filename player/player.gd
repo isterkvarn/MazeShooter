@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var rotation_helper = $RotationHelper
 @onready var muzzle = $RotationHelper/MuzzleFlash
 @onready var animator = $RotationHelper/AnimationPlayer
+@onready var shoot_ray = $RotationHelper/ShootRay
 
 const MAG_SIZE = 6
 const MUZZLE_TIME = 0.2
@@ -73,6 +74,9 @@ func handle_shoot(delta):
 		muzzle.visible = true
 		muzzle_timer = MUZZLE_TIME
 		mag -= 1
+		var collider = shoot_ray.get_collider()
+		if collider != null and collider.is_in_group("goat"):
+				collider.hit()
 	
 	if Input.is_action_just_pressed("reload") or mag <= 0:
 		reload_timer = RELOAD_TIME
@@ -84,3 +88,6 @@ func handle_shoot(delta):
 		muzzle_timer -= delta
 	else:
 		muzzle.visible = false
+
+func dead():
+	get_tree().reload_current_scene()
