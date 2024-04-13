@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://du8t3mcrnniiv"]
 
-[ext_resource type="Script" path="res://maze-generation/maze_generation.gd" id="1_2x000"]
-[ext_resource type="Texture2D" uid="uid://jklnfanpn8y8" path="res://icon.svg" id="2_2c8fw"]
+[ext_resource type="Texture2D" uid="uid://jklnfanpn8y8" path="res://assests/images/icon.svg" id="2_2c8fw"]
+[ext_resource type="Script" path="res://maze-generation/maze_visualizer.gd" id="3_jea4i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdyen"]
 texture = ExtResource("2_2c8fw")
@@ -74,7 +74,7 @@ texture = ExtResource("2_2c8fw")
 sources/2 = SubResource("TileSetAtlasSource_hdyen")
 
 [node name="MazeVisualizer" type="Node2D"]
-script = ExtResource("1_2x000")
+script = ExtResource("3_jea4i")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_v3b7s")
