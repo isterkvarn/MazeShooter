@@ -3,14 +3,13 @@ extends Area3D
 const SPEED = 30
 const CORRIDOR_SIZE = 5
 const POS_MARGIN = 0.2
-var forward = Vector3.FORWARD
+var forward = -Vector3.FORWARD
 var turn_timer = 0
 var g_position
 
 @onready var right_ray = $RayCastRight
 @onready var left_ray  = $RayCastLeft
 @onready var forward_ray = $RayCastForward
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

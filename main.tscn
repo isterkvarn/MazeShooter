@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4bdw0lenx3bd"]
+[gd_scene load_steps=8 format=3 uid="uid://c4bdw0lenx3bd"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_clddr"]
 [ext_resource type="PackedScene" uid="uid://bd7yvbqj1grjx" path="res://player/player.tscn" id="1_ob3t7"]
 [ext_resource type="PackedScene" uid="uid://8lqt0553k5l" path="res://maze-generation/maze.tscn" id="3_fgq4a"]
+[ext_resource type="Script" path="res://maze-generation/goal.gd" id="4_5qo6w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0n0p"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bri4i"]
+albedo_color = Color(1, 0, 0.0745098, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pfq62"]
+material = SubResource("StandardMaterial3D_bri4i")
+size = Vector3(5, 1, 5)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_clddr")
@@ -12,3 +23,15 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63985, 26.4901, -32.3342)
 
 [node name="Maze" parent="." instance=ExtResource("3_fgq4a")]
+
+[node name="Goal" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2.5)
+script = ExtResource("4_5qo6w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
+shape = SubResource("BoxShape3D_y0n0p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Goal"]
+mesh = SubResource("BoxMesh_pfq62")
+
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
