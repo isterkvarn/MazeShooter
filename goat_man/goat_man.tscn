@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://qllw88lr10ht"]
+[gd_scene load_steps=7 format=3 uid="uid://qllw88lr10ht"]
 
 [ext_resource type="Script" path="res://goat_man/goat_man.gd" id="1_q72k3"]
-[ext_resource type="AudioStream" uid="uid://dglxgxncosofh" path="res://assests/sounds/fast-run-113726.mp3" id="2_qbadp"]
+[ext_resource type="AudioStream" uid="uid://sodfeqga7f4u" path="res://assests/sounds/goat_run-002.mp3" id="2_kx041"]
+[ext_resource type="AudioStream" uid="uid://bhra25kygejam" path="res://assests/sounds/goat_dead.mp3" id="3_bwg16"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppe2j"]
 size = Vector3(4, 4, 4)
@@ -38,10 +39,14 @@ target_position = Vector3(3, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63611, 0)
 target_position = Vector3(-3, 0, 0)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_qbadp")
+[node name="GoatRunNoise" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_kx041")
 attenuation_model = 1
 autoplay = true
 doppler_tracking = 1
+
+[node name="GoatDeadNoise" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_bwg16")
+volume_db = 12.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

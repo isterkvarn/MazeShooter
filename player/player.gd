@@ -12,6 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var muzzle = $RotationHelper/MuzzleFlash
 @onready var animator = $RotationHelper/AnimationPlayer
 @onready var shoot_ray = $RotationHelper/ShootRay
+@onready var player_walk_noise = $PlayerWalkNoise
 
 const MAG_SIZE = 4
 const MUZZLE_TIME = 0.2
@@ -48,9 +49,17 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		
+		if not player_walk_noise.playing:
+			player_walk_noise.play()
+			
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		
+		if player_walk_noise.playing:
+			player_walk_noise.stop()
+		
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
@@ -73,6 +82,7 @@ func handle_shoot(delta):
 	if Input.is_action_just_pressed("shoot") and reload_timer <= 0:
 		muzzle.visible = true
 		muzzle_timer = MUZZLE_TIME
+		$RotationHelper/GunShotNoise.play()
 		mag -= 1
 		var collider = shoot_ray.get_collider()
 		if collider != null and collider.is_in_group("goat"):
@@ -90,4 +100,5 @@ func handle_shoot(delta):
 		muzzle.visible = false
 
 func dead():
+	$PlayerDeadNoise.play()
 	get_tree().reload_current_scene()
