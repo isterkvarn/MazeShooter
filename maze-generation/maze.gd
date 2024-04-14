@@ -6,8 +6,8 @@ extends Node3D
 @onready var debug = $Debug
 
 const FLOOR_ITEM_ID = 0
-const WALL_ITEM_ID = 0
-const ROOF_ITEM_ID = 0
+const WALL_ITEM_ID = 1
+const ROOF_ITEM_ID = 1
 
 const FALL_HEIGHT = 5
 
@@ -23,6 +23,9 @@ func _ready():
 		debug.visible = true
 		roof.visible = false
 		create(9, 9)
+
+func get_block_size():
+	return floor.cell_size.x
 
 func get_spawn_coords():
 	# Assume blocks are uniform and all grids have the same size
