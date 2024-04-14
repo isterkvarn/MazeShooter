@@ -53,6 +53,7 @@ func spawn_goats():
 func spawn_goat():
 	var goat_pos = get_respawn_pos()
 	var goat = goat_res.instantiate()
+	goat.player = player
 	goat.transform.origin = maze.get_random_pos()
 	goats.append(goat)
 	maze.add_child(goat)

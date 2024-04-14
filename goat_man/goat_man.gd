@@ -3,15 +3,17 @@ extends Area3D
 const SPEED = 20
 const CORRIDOR_SIZE = 5
 const POS_MARGIN = 0.2
-const RESPAWN_TIME = 6
-const RESPAWN_VARIANCE = 2
+const RESPAWN_TIME = 8
+const RESPAWN_VARIANCE = 4
+const SCREAM_DISTANCE = 15
 var forward = -Vector3.FORWARD
 var turn_timer = 0
 var g_position
 var respawn_timer = 0
 var respawn_pos = null
+var is_screaming = false
+var player = null
 
-@onready var player = %Player
 @onready var right_ray = $RayCastRight
 @onready var left_ray  = $RayCastLeft
 @onready var forward_ray = $RayCastForward
@@ -19,6 +21,7 @@ var respawn_pos = null
 
 func _ready():
 	$GoatRunNoise.play()
+	forward_ray.add_exception(player)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -67,6 +70,8 @@ func _process(delta):
 		
 	global_position = g_position - Vector3(2.5, 0, 2.5)
 	
+	if player != null:
+		handle_scream()
 		
 func in_grid():
 	var global_pos = abs(g_position)
@@ -96,3 +101,13 @@ func _on_body_entered(body):
 		
 func handle_scream():
 	player_ray.target_position = player.global_position
+	var collider = player_ray.get_collider()
+	print(collider)
+	
+	if (collider != null and collider.is_in_group("player") and global_position.distance_to(player.global_position) < SCREAM_DISTANCE and not is_screaming):
+		$GoatScreamNoise.play()
+		is_screaming = true
+	if (global_position.distance_to(player.global_position) > SCREAM_DISTANCE and is_screaming):
+		$GoatScreamNoise.stop()
+		is_screaming = false
+		

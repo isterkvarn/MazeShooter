@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://b6mvanlvl4ve7" path="res://goat_man/temp_hair.tres" id="4_pvfbb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppe2j"]
-size = Vector3(2.91959, 4, 1.20633)
+size = Vector3(3.66422, 4, 1.80982)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4hody"]
 size = Vector3(4, 4, 4)
@@ -603,7 +603,7 @@ _data = {
 script = ExtResource("1_q72k3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0111237, 2, -0.335479)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587811, 2, 2.03209)
 shape = SubResource("BoxShape3D_ppe2j")
 
 [node name="TestGoatMesh" type="MeshInstance3D" parent="."]
@@ -629,6 +629,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63611, 0)
 target_position = Vector3(-3, 0, 0)
 
 [node name="RayCastPlayer" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.03612, 0)
 
 [node name="GoatRunNoise" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_kx041")
@@ -645,7 +646,7 @@ volume_db = 12.0
 stream = ExtResource("4_4mdf8")
 
 [node name="minitar" type="Node3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 1.71224)
 
 [node name="Armature" type="Node3D" parent="minitar"]
 
