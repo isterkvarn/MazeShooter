@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const MOUSE_SENSITIVITY = 0.003
@@ -12,6 +11,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var muzzle = $RotationHelper/MuzzleFlash
 @onready var animator = $RotationHelper/AnimationPlayer
 @onready var shoot_ray = $RotationHelper/ShootRay
+@onready var ammo = $RotationHelper/Camera3D/Control/ammo
+@onready var score_indicator = $RotationHelper/Camera3D/Control/score
+@onready var level_score = $RotationHelper/Camera3D/Control/score_temp
+@onready var level = $RotationHelper/Camera3D/Control/level
 
 const MAG_SIZE = 4
 const MUZZLE_TIME = 0.2
@@ -20,9 +23,12 @@ const RELOAD_TIME = 6
 var mag = MAG_SIZE
 var reload_timer = 0
 var muzzle_timer = 0
+var score = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	update_ammo_ui()
+	add_score(0)
 
 func _process(delta):
 	$RotationHelper/SubViewportContainer/SubViewport/GunCam.global_transform = $RotationHelper/Camera3D.global_transform
@@ -64,16 +70,17 @@ func _input(event):
 		rotation_helper.rotation.x = clampf(rotation_helper.rotation.x, -PI/2, PI/2)
 		
 func handle_shoot(delta):
-	
-	
 	if reload_timer > 0:
 		reload_timer -= delta
-	
+		if reload_timer <= 0:
+			update_ammo_ui()
+
 	# Handle shooting
 	if Input.is_action_just_pressed("shoot") and reload_timer <= 0:
 		muzzle.visible = true
 		muzzle_timer = MUZZLE_TIME
 		mag -= 1
+		update_ammo_ui()
 		var collider = shoot_ray.get_collider()
 		if collider != null and collider.is_in_group("goat"):
 				collider.hit()
@@ -89,5 +96,18 @@ func handle_shoot(delta):
 	else:
 		muzzle.visible = false
 
+func update_ammo_ui():
+	ammo.text = str(mag) + "/" + str(MAG_SIZE)
+
 func dead():
 	get_tree().reload_current_scene()
+
+func set_level_score(score):
+	level_score.text = "+ " + str(score)
+
+func add_score(score_in):
+	score =+ score_in
+	score_indicator.text = str(score_in)
+
+func set_level(level_in):
+	level.text = "Level: " + str(level_in)
