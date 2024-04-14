@@ -8,14 +8,15 @@ const RESPAWN_VARIANCE = 2
 var forward = -Vector3.FORWARD
 var turn_timer = 0
 var g_position
-var respawn_timer = RESPAWN_TIME
+var respawn_timer = 0
+var respawn_pos = null
 
 @onready var right_ray = $RayCastRight
 @onready var left_ray  = $RayCastLeft
 @onready var forward_ray = $RayCastForward
 
 func _ready():
-	$AudioStreamPlayer3D.playing = false
+	$AudioStreamPlayer3D.playing = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -78,10 +79,12 @@ func in_grid():
 	
 func hit():
 	$AudioStreamPlayer3D.playing = false
-	transform.origin = get_parent().get_random_pos()
+	# Put them in purgatory
+	transform.origin = Vector3(-10, -10, -10)
 	respawn_timer = RESPAWN_TIME + randf_range(-RESPAWN_VARIANCE, RESPAWN_VARIANCE)
 	
 func respawn():
+	transform.origin = get_parent().get_parent().get_respawn_pos()
 	$AudioStreamPlayer3D.playing = true
 
 func _on_body_entered(body):

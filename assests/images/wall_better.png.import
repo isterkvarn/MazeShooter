@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6eay3yp80wic"
-path.s3tc="res://.godot/imported/wall.png-cab55a0cf2a8733d21c4b7533af75e32.s3tc.ctex"
+uid="uid://ci4f3nqvj0tpy"
+path.s3tc="res://.godot/imported/wall_better.png-073c78d4dd2ebb4a584c9f27baee55ce.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assests/images/wall.png"
-dest_files=["res://.godot/imported/wall.png-cab55a0cf2a8733d21c4b7533af75e32.s3tc.ctex"]
+source_file="res://assests/images/wall_better.png"
+dest_files=["res://.godot/imported/wall_better.png-073c78d4dd2ebb4a584c9f27baee55ce.s3tc.ctex"]
 
 [params]
 
