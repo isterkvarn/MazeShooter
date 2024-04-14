@@ -51,7 +51,7 @@ func spawn_goats():
 		spawn_goat()
 
 func spawn_goat():
-	var goat_pos = maze.get_random_pos()
+	var goat_pos = get_respawn_pos()
 	var goat = goat_res.instantiate()
 	goat.transform.origin = maze.get_random_pos()
 	goats.append(goat)
@@ -88,8 +88,12 @@ func get_respawn_pos():
 	var respawn = maze.get_random_pos()
 	var player_pos = player.transform.origin
 	var block_size = maze.get_block_size()
-	while respawn.x/block_size == player_pos.x/block_size or respawn.z/block_size == player_pos.z/block_size:
+	var respawn_distance = block_size * 5
+	var count = 0; # if there is not point
+	while (respawn.distance_to(Vector3(player_pos.x, 0, player_pos.z)) < respawn_distance
+		or count > 1000):
 		respawn = maze.get_random_pos()
+		count += 1
 	return respawn
 	
 

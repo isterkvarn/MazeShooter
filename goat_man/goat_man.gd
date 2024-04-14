@@ -11,9 +11,11 @@ var g_position
 var respawn_timer = 0
 var respawn_pos = null
 
+@onready var player = %Player
 @onready var right_ray = $RayCastRight
 @onready var left_ray  = $RayCastLeft
 @onready var forward_ray = $RayCastForward
+@onready var player_ray = $RayCastPlayer
 
 func _ready():
 	$GoatRunNoise.play()
@@ -64,6 +66,7 @@ func _process(delta):
 		forward = forward.rotated(Vector3(0, 1, 0), turn)
 		
 	global_position = g_position - Vector3(2.5, 0, 2.5)
+	
 		
 func in_grid():
 	var global_pos = abs(g_position)
@@ -90,3 +93,6 @@ func respawn():
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		body.dead()
+		
+func handle_scream():
+	player_ray.target_position = player.global_position
