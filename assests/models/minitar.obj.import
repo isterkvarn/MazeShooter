@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://qvjpqfve007w"
+path="res://.godot/imported/minitar.obj-4aa38bf757d6fbb303e0dc4cdd632d3a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/minitar.obj-4aa38bf757d6fbb303e0dc4cdd632d3a.mesh"]
+
+source_file="res://assests/models/minitar.obj"
+dest_files=["res://.godot/imported/minitar.obj-4aa38bf757d6fbb303e0dc4cdd632d3a.mesh", "res://.godot/imported/minitar.obj-4aa38bf757d6fbb303e0dc4cdd632d3a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://nrme5upkbwsw"]
+
+[ext_resource type="PackedScene" uid="uid://dnlie54jcscno" path="res://assests/models/minitar.glb" id="1_t7322"]
+
+[node name="minitar" instance=ExtResource("1_t7322")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(0.77826, -0.034066, -0.000865825, 0.627017)
+bones/8/rotation = Quaternion(0.276972, -0.0517773, 0.120965, 0.951826)
+bones/12/rotation = Quaternion(-0.415085, -0.515893, 0.453794, 0.596347)
+bones/13/rotation = Quaternion(0.250583, -0.228106, -0.695167, 0.63397)
+bones/17/rotation = Quaternion(0.0258178, 0.197268, 0.944422, -0.261699)
+bones/18/rotation = Quaternion(-0.835173, 0.152336, -0.165818, 0.501781)
+bones/19/rotation = Quaternion(0.693399, 0.0416568, 0.0292377, 0.718754)
+bones/20/rotation = Quaternion(-0.0613324, 0.324458, 0.908611, 0.255717)
+bones/21/rotation = Quaternion(-0.48661, -0.0582904, 0.271997, 0.828149)
+bones/22/rotation = Quaternion(0.42025, -0.0362834, -0.0493755, 0.905337)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.389649, 0.0222455, -0.0145888, -0.0200166, 0.38624, 0.0543313, 0.0175222, -0.0534574, 0.386483, -0.00807337, 0.515547, -0.126241)
+
+[node name="Cube_002" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.0895878, 0.00823949, 0.0265003, 0.00689176, 0.0163259, -0.0707206, -0.0437289, -0.0143073, -0.0654372, -0.398563, 0.677905, -0.312002)
+
+[node name="Cube_003" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.00253694, -0.00136356, -0.0421859, -0.0411451, 0.00950446, 0.00216713, 0.0094125, 0.0411796, -0.00189707, -0.052308, 0.0808616, 0.270804)
+
+[node name="Cylinder" parent="Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.0920771, 0.0605221, 0.0212221, -0.0640926, 0.0854822, 0.0342992, 0.00233263, -0.0402663, 0.104712, 0.216498, 0.855341, -0.253356)
+
+[node name="Sphere" parent="Armature/Skeleton3D" index="4"]
+transform = Transform3D(0.0309907, 0.00315617, -0.0256172, -0.00171932, 0.0619838, 0.00073657, 0.0140664, 0.000622628, 0.0565293, 0.254723, 0.620426, -0.102831)
+
+[node name="Cylinder_001" parent="Armature/Skeleton3D" index="5"]
+transform = Transform3D(0.00574864, -0.00268679, 0.0382984, 0.0355477, 0.0150018, -0.00428331, -0.0145036, 0.0357038, 0.00468176, -0.434217, -0.568413, -0.486724)
+
+[node name="Plane" parent="Armature/Skeleton3D" index="6"]
+transform = Transform3D(0.00563226, -0.0375231, -0.00263239, 0.034828, 0.0041966, 0.0146981, -0.0142099, -0.00458698, 0.034981, -0.463559, -0.520324, 0.0450582)
