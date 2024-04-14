@@ -1,7 +1,7 @@
 extends Control
 
 const SAVE_FILE: String = "user://highscores.dat"
-const PADDING: int = 30
+const PADDING: int = 27
 const MAX_NAME_LENGTH: int = 16
 
 @onready var main = preload("res://main.tscn")
@@ -141,8 +141,8 @@ func _on_response(result, response_code, headers, body):
 func _on_button_pressed():
 	if len(name_input.text) == 0:
 		return
-	
-	_add_score(name_input.text, float(score_text.text), 2)
+
+	_add_score(name_input.text, player_score.score, player_score.level)
 	_populate_name_box()
 	
 	name_input.visible = false
