@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://sodfeqga7f4u" path="res://assests/sounds/goat_run-002.mp3" id="2_kx041"]
 [ext_resource type="AudioStream" uid="uid://bhra25kygejam" path="res://assests/sounds/goat_dead.mp3" id="3_bwg16"]
 [ext_resource type="AudioStream" uid="uid://bswbwpqiefxon" path="res://assests/sounds/goat-scream-sound-effect-hd-made-with-Voicemod.mp3" id="4_4mdf8"]
-[ext_resource type="Material" path="res://goat_man/temp_hair.tres" id="4_pvfbb"]
+[ext_resource type="Material" uid="uid://b6mvanlvl4ve7" path="res://goat_man/temp_hair.tres" id="4_pvfbb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppe2j"]
 size = Vector3(3.66422, 4, 1.80982)

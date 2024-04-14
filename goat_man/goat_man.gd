@@ -100,11 +100,10 @@ func _on_body_entered(body):
 		body.dead()
 		
 func handle_scream():
-	player_ray.target_position = player.global_position
+	player_ray.target_position = to_local(player.global_position)
 	var collider = player_ray.get_collider()
-	print(collider)
 	
-	if (collider != null and collider.is_in_group("player") and global_position.distance_to(player.global_position) < SCREAM_DISTANCE and not is_screaming):
+	if (collider == null and global_position.distance_to(player.global_position) < SCREAM_DISTANCE and not is_screaming):
 		$GoatScreamNoise.play()
 		is_screaming = true
 	if (global_position.distance_to(player.global_position) > SCREAM_DISTANCE and is_screaming):
