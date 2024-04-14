@@ -1,7 +1,7 @@
 extends HTTPRequest
 
 
-const URL: String = "http://dethcrvsh.com/goatman"
+const URL: String = "https://dethcrvsh.com/goatman"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,9 +19,10 @@ func new_score(name: String, score: int, level: int, callback):
 	var post_data = {
 		"name": name,
 		"score": score,
-		"level": level
+		"level": level,
+		"auth": "if you're a developer, ask dethcrvsh for this, otherwise, eat shit >:D"
 	}
-	
+
 	# Convert the dictionary to a JSON string (optional, depends on your API)
 	var post_data_json = JSON.stringify(post_data)
 	request(URL + "/add_score", headers, HTTPClient.METHOD_POST, post_data_json)

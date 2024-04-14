@@ -74,10 +74,6 @@ func _add_score(name: String, score: int, level: int):
 	scores.append(new_score)
 	_to_disk()
 
-func _process(delta):
-	if Input.is_action_just_pressed("start"):
-		get_tree().change_scene_to_file("res://levels/demo_level.tscn")
-
 func _to_disk():
 	var file = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	file.store_string(_to_json())
