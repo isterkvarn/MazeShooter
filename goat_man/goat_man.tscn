@@ -630,6 +630,7 @@ target_position = Vector3(-3, 0, 0)
 [node name="GoatRunNoise" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_kx041")
 attenuation_model = 1
+volume_db = 4.0
 autoplay = true
 doppler_tracking = 1
 
