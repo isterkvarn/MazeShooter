@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="MazeShooter"
-run/main_scene="res://main.tscn"
+run/main_scene="res://menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assests/images/icon.svg"
+
+[autoload]
+
+PlayerScore="*res://highscore/player_score.gd"
 
 [input]
 

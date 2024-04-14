@@ -18,7 +18,7 @@ size = Vector3(5, 1, 5)
 [sub_resource type="FogMaterial" id="FogMaterial_7bx2w"]
 height_falloff = 0.463409
 
-[node name="Node3D" type="Node3D"]
+[node name="Main" type="Node3D"]
 script = ExtResource("1_clddr")
 
 [node name="Player" parent="." instance=ExtResource("1_ob3t7")]

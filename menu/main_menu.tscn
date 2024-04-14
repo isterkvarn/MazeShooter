@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://xgt3bnu5j4fn"]
+
+[ext_resource type="FontFile" uid="uid://xdxplerkq0g4" path="res://assests/fonts/Alice_in_Wonderland_3.ttf" id="1_dx42m"]
+[ext_resource type="Script" path="res://menu/main_menu.gd" id="1_xms6j"]
+[ext_resource type="FontFile" uid="uid://pacgb8mowg72" path="res://assests/fonts/RomanAntique.ttf" id="2_xeher"]
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_xms6j")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0.737255, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("1_dx42m")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Goatman: The Game[/center]"
+
+[node name="start_button" type="Button" parent="Control/RichTextLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.661
+anchor_right = 0.5
+anchor_bottom = 0.661
+offset_left = -63.0
+offset_top = -27.5
+offset_right = 63.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_xeher")
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="highscore_button" type="Button" parent="Control/RichTextLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.801
+anchor_right = 0.5
+anchor_bottom = 0.801
+offset_left = -63.0
+offset_top = -27.5
+offset_right = 63.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_xeher")
+theme_override_font_sizes/font_size = 40
+text = "Highscores"
+
+[connection signal="pressed" from="Control/RichTextLabel/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/RichTextLabel/highscore_button" to="." method="_on_highscore_button_pressed"]

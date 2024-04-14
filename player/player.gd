@@ -7,6 +7,8 @@ const MOUSE_SENSITIVITY = 0.003
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@onready var player_score = get_node("/root/PlayerScore")
+@onready var highscore = preload("res://highscore/highscore.tscn")
 @onready var rotation_helper = $RotationHelper
 @onready var muzzle = $RotationHelper/MuzzleFlash
 @onready var animator = $RotationHelper/AnimationPlayer
@@ -111,7 +113,8 @@ func update_ammo_ui():
 
 func dead():
 	$PlayerDeadNoise.play()
-	get_tree().reload_current_scene()
+	get_tree().root.add_child(highscore.instantiate())
+	get_node("/root/Main").queue_free()
 
 func set_level_score(score):
 	level_score.text = "+ " + str(score)
@@ -119,6 +122,8 @@ func set_level_score(score):
 func add_score(score_in):
 	score =+ score_in
 	score_indicator.text = str(score_in)
+	player_score.score = score
 
 func set_level(level_in):
 	level.text = "Level: " + str(level_in)
+	player_score.level = level_in
