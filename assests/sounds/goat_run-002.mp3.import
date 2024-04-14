@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/goat_run-002.mp3-391cb079bc0b409d871f8b4cba6e
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
