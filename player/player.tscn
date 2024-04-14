@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://d3yyvbqxy7ask" path="res://assests/sounds/player_dead.mp3" id="9_scq1c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndbho"]
+radius = 1.0
 
 [sub_resource type="Animation" id="Animation_n7aky"]
 length = 0.001
@@ -199,7 +200,7 @@ omni_range = 1.17686
 
 [node name="SpotLight3D" type="SpotLight3D" parent="RotationHelper"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0435137, 0)
-light_energy = 7.0
+light_energy = 5.0
 spot_range = 23.6429
 spot_attenuation = 0.8
 spot_angle = 35.0
@@ -210,7 +211,7 @@ stream = ExtResource("5_qef2r")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 layers = 3
-light_energy = 0.5
+light_energy = 0.3
 omni_range = 6.32912
 
 [node name="Control" type="Control" parent="."]
@@ -218,10 +219,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 98.0
-offset_top = -7.0
-offset_right = 98.0
-offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 

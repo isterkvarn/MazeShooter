@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://goat_man/goat_man.gd" id="1_q72k3"]
 [ext_resource type="AudioStream" uid="uid://sodfeqga7f4u" path="res://assests/sounds/goat_run-002.mp3" id="2_kx041"]
 [ext_resource type="AudioStream" uid="uid://bhra25kygejam" path="res://assests/sounds/goat_dead.mp3" id="3_bwg16"]
-[ext_resource type="Material" path="res://goat_man/temp_hair.tres" id="4_pvfbb"]
+[ext_resource type="Material" uid="uid://b6mvanlvl4ve7" path="res://goat_man/temp_hair.tres" id="4_pvfbb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppe2j"]
 size = Vector3(4, 4, 4)
