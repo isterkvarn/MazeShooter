@@ -88,7 +88,7 @@ func _process(delta):
 
 func get_respawn_pos():
 	var respawn = maze.get_random_pos()
-	var player_pos = player.transform.origin
+	var player_pos = player.global_position
 	var block_size = maze.get_block_size()
 	var respawn_distance = block_size * 5
 	var count = 0; # if there is not point
