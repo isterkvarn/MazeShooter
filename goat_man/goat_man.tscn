@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://goat_man/goat_man.gd" id="1_q72k3"]
 [ext_resource type="AudioStream" uid="uid://sodfeqga7f4u" path="res://assests/sounds/goat_run-002.mp3" id="2_kx041"]
 [ext_resource type="AudioStream" uid="uid://bhra25kygejam" path="res://assests/sounds/goat_dead.mp3" id="3_bwg16"]
-[ext_resource type="Material" uid="uid://b6mvanlvl4ve7" path="res://goat_man/temp_hair.tres" id="4_pvfbb"]
+[ext_resource type="Material" path="res://goat_man/temp_hair.tres" id="4_pvfbb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppe2j"]
 size = Vector3(4, 4, 4)
@@ -807,7 +807,7 @@ bones/22/rotation = Quaternion(0.386491, -0.0354263, -0.0513108, 0.920183)
 bones/22/scale = Vector3(1, 1, 1)
 
 [node name="Cube" type="BoneAttachment3D" parent="minitar/Armature/Skeleton3D"]
-transform = Transform3D(0.390296, 0.00782074, -0.0119138, -0.005304, 0.382753, 0.0774971, 0.0132276, -0.0772837, 0.382605, -0.00614295, 0.536099, -0.127094)
+transform = Transform3D(0.390296, 0.00782075, -0.0119138, -0.00530402, 0.382753, 0.0774969, 0.0132276, -0.0772834, 0.382605, -0.00614296, 0.536099, -0.127094)
 bone_name = "Cube"
 bone_idx = 2
 
@@ -817,7 +817,7 @@ mesh = SubResource("ArrayMesh_47dg2")
 skeleton = NodePath("")
 
 [node name="Cube_002" type="BoneAttachment3D" parent="minitar/Armature/Skeleton3D"]
-transform = Transform3D(-0.090291, 0.00748115, 0.0282241, 0.00105743, 0.0156907, -0.0736509, -0.0428033, -0.0153934, -0.0613567, -0.404358, 0.672994, -0.31692)
+transform = Transform3D(-0.090291, 0.00748115, 0.028224, 0.00105752, 0.0156908, -0.0736509, -0.0428032, -0.0153934, -0.0613568, -0.404357, 0.672994, -0.31692)
 bone_name = "Cube.002"
 bone_idx = 3
 
@@ -827,7 +827,7 @@ mesh = SubResource("ArrayMesh_gg7v8")
 skeleton = NodePath("")
 
 [node name="Cube_003" type="BoneAttachment3D" parent="minitar/Armature/Skeleton3D"]
-transform = Transform3D(-0.000955921, -0.00121115, -0.042256, -0.0405504, 0.0119701, 0.000574249, 0.0119457, 0.0405364, -0.0014321, -0.0301186, 0.125424, 0.296372)
+transform = Transform3D(-0.000955926, -0.00121116, -0.0422562, -0.0405506, 0.0119702, 0.000574251, 0.0119457, 0.0405366, -0.00143211, -0.0301186, 0.125425, 0.296372)
 bone_name = "Cube.003"
 bone_idx = 4
 
@@ -836,7 +836,7 @@ mesh = SubResource("ArrayMesh_c01fc")
 skeleton = NodePath("")
 
 [node name="Cylinder" type="BoneAttachment3D" parent="minitar/Armature/Skeleton3D"]
-transform = Transform3D(0.0943252, 0.0569517, 0.0212309, -0.0605783, 0.0848967, 0.0414041, 0.00495136, -0.046266, 0.10211, 0.20464, 0.875038, -0.277897)
+transform = Transform3D(0.0943252, 0.0569517, 0.021231, -0.0605783, 0.0848968, 0.0414042, 0.00495132, -0.046266, 0.10211, 0.20464, 0.875038, -0.277897)
 bone_name = "Cylinder"
 bone_idx = 5
 
@@ -845,7 +845,7 @@ mesh = SubResource("ArrayMesh_ol8mc")
 skeleton = NodePath("")
 
 [node name="Sphere" type="BoneAttachment3D" parent="minitar/Armature/Skeleton3D"]
-transform = Transform3D(0.0311976, 0.000951148, -0.0249522, 0.000231917, 0.0619767, 0.00332441, 0.0137076, -0.00321333, 0.0567334, 0.253007, 0.651318, -0.113842)
+transform = Transform3D(0.0311976, 0.000951149, -0.0249522, 0.000231906, 0.0619766, 0.00332437, 0.0137076, -0.00321327, 0.0567333, 0.253007, 0.651319, -0.113842)
 bone_name = "Sphere"
 bone_idx = 6
 
@@ -854,7 +854,7 @@ mesh = SubResource("ArrayMesh_f3t52")
 skeleton = NodePath("")
 
 [node name="Cylinder_001" type="BoneAttachment3D" parent="minitar/Armature/Skeleton3D"]
-transform = Transform3D(0.0071645, -0.000644383, 0.0381483, 0.0340853, 0.0175486, -0.00610504, -0.0171434, 0.0346217, 0.00380444, -0.493275, -0.570215, -0.409328)
+transform = Transform3D(0.0071645, -0.0006444, 0.0381482, 0.0340853, 0.0175486, -0.00610502, -0.0171434, 0.0346217, 0.00380448, -0.493274, -0.570216, -0.409326)
 bone_name = "Cylinder.001"
 bone_idx = 15
 
@@ -864,7 +864,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_pvfbb")
 
 [node name="Plane" type="BoneAttachment3D" parent="minitar/Armature/Skeleton3D"]
-transform = Transform3D(0.00701946, -0.037376, -0.000631338, 0.0333953, 0.00598145, 0.0171934, -0.0167963, -0.00372743, 0.0339208, -0.501715, -0.484101, 0.118383)
+transform = Transform3D(0.00701946, -0.0373759, -0.000631355, 0.0333953, 0.00598143, 0.0171934, -0.0167963, -0.00372746, 0.0339208, -0.501714, -0.4841, 0.118384)
 bone_name = "Plane"
 bone_idx = 16
 

@@ -1,6 +1,7 @@
 extends Node3D
 
 const START_TIME = 5
+const MIN_SCORE = 25
 
 @onready var player = %Player
 @onready var goal = $Goal
@@ -14,16 +15,23 @@ var has_started = false
 var maze
 var goats = []
 var timer = 0
+var level_score = 0
+var elapsed_time = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	new_level()
+	player.set_level_score(level_score)
 
 func new_level():
 	maze = maze_res.instantiate()
 	add_child(maze)
 	maze.create(maze_dimension, maze_dimension)
-	
+	level_score = get_level_score()
+	player.set_level_score(level_score)
+	player.set_level(maze_dimension - 3)
+	has_started = false
+
 	player.transform.origin = maze.get_spawn_coords()
 	goal.transform.origin = maze.get_goal_coords()
 
@@ -31,6 +39,8 @@ func next_level():
 	goats = []
 	maze_dimension += 1
 	timer = 0
+	player.add_score(level_score)
+	
 	has_started = false
 	number_of_goats = get_goat_num()
 	maze.queue_free()
@@ -51,8 +61,18 @@ func spawn_goat():
 func get_goat_num():
 	return (maze_dimension - 3) 
 
+func get_level_score():
+	return 75 + (maze_dimension - 4) * 50
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# One second has passed
+	if not int(elapsed_time) == int(elapsed_time + delta):
+		if level_score > MIN_SCORE:
+			level_score -= 1
+			player.set_level_score(level_score)
+
+	elapsed_time += delta
 	if has_started:
 		return
 
@@ -62,6 +82,7 @@ func _process(delta):
 		has_started = true
 		spawn_goats()
 		timer = 0
+
 
 func get_respawn_pos():
 	var respawn = maze.get_random_pos()
