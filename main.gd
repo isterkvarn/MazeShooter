@@ -7,6 +7,7 @@ const MIN_SCORE = 25
 @onready var goal = $Goal
 @onready var goat_res = preload("res://goat_man/goat_man.tscn")
 @onready var maze_res = preload("res://maze-generation/maze.tscn")
+@onready var highscore = preload("res://highscore/highscore.tscn")
 
 var maze_dimension = 4
 var has_started = false
