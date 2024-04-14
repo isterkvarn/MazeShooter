@@ -16,7 +16,7 @@ var respawn_pos = null
 @onready var forward_ray = $RayCastForward
 
 func _ready():
-	$AudioStreamPlayer3D.playing = true
+	$GoatRunNoise.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -78,14 +78,14 @@ func in_grid():
 	return within_x and within_z
 	
 func hit():
-	$AudioStreamPlayer3D.playing = false
-	# Put them in purgatory
+	$GoatDeadNoise.play()
+	$GoatRunNoise.playing = false
 	transform.origin = Vector3(-10, -10, -10)
 	respawn_timer = RESPAWN_TIME + randf_range(-RESPAWN_VARIANCE, RESPAWN_VARIANCE)
 	
 func respawn():
 	transform.origin = get_parent().get_parent().get_respawn_pos()
-	$AudioStreamPlayer3D.playing = true
+	$GoatRunNoise.playing = true
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):

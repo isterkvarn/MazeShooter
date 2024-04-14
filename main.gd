@@ -41,6 +41,7 @@ func next_level():
 	timer = 0
 	player.add_score(level_score)
 	
+	has_started = false
 	number_of_goats = get_goat_num()
 	maze.queue_free()
 	new_level()
