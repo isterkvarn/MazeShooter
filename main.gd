@@ -63,7 +63,7 @@ func get_goat_num():
 	return (maze_dimension - 3) 
 
 func get_level_score():
-	return 75 + (maze_dimension - 4) * 50
+	return 100 + (maze_dimension - 4) * 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
