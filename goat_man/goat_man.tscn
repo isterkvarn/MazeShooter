@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://qllw88lr10ht"]
+[gd_scene load_steps=39 format=3 uid="uid://qllw88lr10ht"]
 
 [ext_resource type="Script" path="res://goat_man/goat_man.gd" id="1_q72k3"]
 [ext_resource type="AudioStream" uid="uid://sodfeqga7f4u" path="res://assests/sounds/goat_run-002.mp3" id="2_kx041"]
@@ -12,7 +12,11 @@ size = Vector3(3.66422, 4, 1.80982)
 [sub_resource type="BoxMesh" id="BoxMesh_4hody"]
 size = Vector3(4, 4, 4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_jmw0y"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q25hc"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0wny5"]
+material = SubResource("StandardMaterial3D_q25hc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fd1c5"]
 resource_name = "GoatHair"
@@ -611,10 +615,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 visible = false
 mesh = SubResource("BoxMesh_4hody")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="TestBall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86008, 2.46564)
 visible = false
-mesh = SubResource("BoxMesh_jmw0y")
+mesh = SubResource("SphereMesh_0wny5")
 
 [node name="RayCastForward" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63611, 0)

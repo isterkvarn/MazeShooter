@@ -19,10 +19,6 @@ config/icon="res://assests/images/icon.svg"
 
 PlayerScore="*res://highscore/player_score.gd"
 
-[display]
-
-window/size/mode=3
-
 [input]
 
 jump={

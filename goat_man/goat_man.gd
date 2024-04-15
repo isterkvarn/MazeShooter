@@ -3,8 +3,8 @@ extends Area3D
 const SPEED = 20
 const CORRIDOR_SIZE = 5
 const POS_MARGIN = 0.2
-const RESPAWN_TIME = 8
-const RESPAWN_VARIANCE = 4
+const RESPAWN_TIME = 0.1
+const RESPAWN_VARIANCE = 0.1
 const SCREAM_DISTANCE = 15
 var forward = -Vector3.FORWARD
 var turn_timer = 0
@@ -92,7 +92,7 @@ func hit():
 	respawn_timer = RESPAWN_TIME + randf_range(-RESPAWN_VARIANCE, RESPAWN_VARIANCE)
 	
 func respawn():
-	transform.origin = get_parent().get_parent().get_respawn_pos()
+	global_position = get_parent().get_parent().get_respawn_pos()
 	$GoatRunNoise.playing = true
 
 func _on_body_entered(body):
@@ -100,7 +100,7 @@ func _on_body_entered(body):
 		body.dead()
 		
 func handle_scream():
-	player_ray.target_position = to_local(player.global_position)
+	$TestBall.global_position = player_ray.get_collision_point()
 	var collider = player_ray.get_collider()
 	
 	if (collider == null and global_position.distance_to(player.global_position) < SCREAM_DISTANCE and not is_screaming):
