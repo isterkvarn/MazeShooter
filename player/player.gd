@@ -120,8 +120,8 @@ func set_level_score(score):
 	level_score.text = "+ " + str(score)
 
 func add_score(score_in):
-	score =+ score_in
-	score_indicator.text = str(score_in)
+	score += score_in
+	score_indicator.text = str(score)
 	player_score.score = score
 
 func set_level(level_in):

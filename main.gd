@@ -92,12 +92,10 @@ func get_respawn_pos():
 	var block_size = maze.get_block_size()
 	var respawn_distance = block_size * 6
 	var count = 0; # if there is not point
-	print("Distance:",respawn.distance_to(Vector3(player_pos.x, 0, player_pos.z)))
 	while (respawn.distance_to(Vector3(player_pos.x, 0, player_pos.z)) < float(respawn_distance)
 		and count < 1000):
 		respawn = maze.get_random_pos()
 		count += 1
-		print(respawn.distance_to(Vector3(player_pos.x, 0, player_pos.z)))
 	return respawn
 	
 
