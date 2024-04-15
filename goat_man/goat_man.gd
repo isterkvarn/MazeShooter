@@ -3,8 +3,8 @@ extends Area3D
 const SPEED = 20
 const CORRIDOR_SIZE = 5
 const POS_MARGIN = 0.2
-const RESPAWN_TIME = 0.1
-const RESPAWN_VARIANCE = 0.1
+const RESPAWN_TIME = 6
+const RESPAWN_VARIANCE = 2
 const SCREAM_DISTANCE = 15
 var forward = -Vector3.FORWARD
 var turn_timer = 0
